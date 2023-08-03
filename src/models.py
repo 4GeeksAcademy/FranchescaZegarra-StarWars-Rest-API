@@ -45,7 +45,7 @@ class Favorites(db.Model):
 class People(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(250), nullable=False)
-    heigh = db.Column(db.Integer)
+    height = db.Column(db.Integer)
     mass = db.Column(db.Integer)
     hair_color = db.Column(db.String(80))
     skin_color = db.Column(db.String(80))
@@ -61,7 +61,7 @@ class People(db.Model):
         return {
             "id": self.id,
             "name": self.name,
-            "heigh": self.heigh,
+            "height": self.height,
             "mass": self.mass,
             "hair_color": self.hair_color,
             "skin_color": self.skin_color,
