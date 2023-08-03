@@ -61,7 +61,7 @@ def get_favorites():
 
 
 @app.route('/users/<int:user_id>/favorites/people/<int:person_id>', methods=['POST', 'DELETE'])
-def post_or_delete_favorite(person_id):
+def post_or_delete_favorite_person(person_id):
     if request.method == 'POST':
         favorite = Favorites(people_id=person_id)
         db.session.add(favorite)
@@ -77,7 +77,7 @@ def post_or_delete_favorite(person_id):
 
 
 @app.route('/users/<int:user_id>/favorites/vehicles/<int:vehicle_id>', methods=['POST', 'DELETE'])
-def post_or_delete_favorite(vehicle_id):
+def post_or_delete_favorite_vehicle(vehicle_id):
     if request.method == 'POST':
         favorite = Favorites(vehicles_id=vehicle_id)
         db.session.add(favorite)
@@ -93,7 +93,7 @@ def post_or_delete_favorite(vehicle_id):
 
 
 @app.route('/users/<int:user_id>/favorites/planets/<int:planet_id>', methods=['POST', 'DELETE'])
-def post_or_delete_favorite(planet_id):
+def post_or_delete_favorite_planet(planet_id):
     if request.method == 'POST':
         favorite = Favorites(planets_id=planet_id)
         db.session.add(favorite)
@@ -138,7 +138,7 @@ def get_planets():
     return [planet.to_jason() for planet in planets], 200
 
 
-@app.rote('/planets/<int:planet_id>')
+@app.route('/planets/<int:planet_id>')
 def get_single_planet(planet_id):
     planet = Planets.query.get(planet_id)
     return jsonify(planet.serialize()), 200
